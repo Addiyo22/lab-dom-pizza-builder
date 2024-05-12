@@ -70,10 +70,10 @@ function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   let saucy = document.querySelectorAll('.sauce');
   saucy.forEach((witSauce) => {
-    if(!state.whiteSauce){
-      witSauce.classList.remove('sauce-white')
+    if(state.whiteSauce){
+      witSauce.classList.add('sauce-white')
     }else{
-      witSauce.classList.add('sauce-white');
+      witSauce.classList.remove('sauce-white');
     }
   })
 }
@@ -82,22 +82,21 @@ function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   let crusty = document.querySelectorAll('.crust');
   crusty.forEach((glutCrust) => {
-    if(!state.glutenFreeCrust){
-      glutCrust.classList.remove('crust-gluten-free')
+    if(state.glutenFreeCrust){
+      glutCrust.classList.add('crust-gluten-free')
     }else{
-      glutCrust.classList.add('crust-gluten-free');
+      glutCrust.classList.remove('crust-gluten-free');
     }
   })
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  const actif = document.querySelectorAll('.btn')
-  actif.forEach((activeBtn) =>{
-    activeBtn.addEventListener('click', function() {
-      activeBtn.classList.toggle('active')
-    });   
-  })    
+  document.querySelector('.btn.btn-pepperoni').classList.toggle('active', state.pepperoni)
+  document.querySelector('.btn.btn-mushrooms').classList.toggle('active', state.mushrooms)
+  document.querySelector('.btn.btn-green-peppers').classList.toggle('active', state.greenPeppers)
+  document.querySelector('.btn.btn-sauce').classList.toggle('active', state.whiteSauce)
+  document.querySelector('.btn.btn-crust').classList.toggle('active',state.glutenFreeCrust)
 }
 
 function renderPrice() {
